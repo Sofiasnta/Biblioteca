@@ -1,27 +1,46 @@
 package co.edu.uniquindio.poo;
 
+import java.time.LocalDate;
+
 public class Libro {
     private String codigo;
     private String isbn;
     private String autor;
     private String titulo;
     private String editorial;
-    private String fecha;
+    private LocalDate fechaPublicacion;
     private int unidadesDisponibles;
     private EstadoLibro estadoLibro;
-    private double precioLibro;
 
-    public Libro(String codigo, String isbn, String autor, String titulo, String editorial, String fecha,
+
+    public Libro(String codigo, String isbn, String autor, String titulo, String editorial, LocalDate fechaPublicacion,
             int unidadesDisponibles, EstadoLibro estadoLibro) {
         this.codigo = codigo;
         this.isbn = isbn;
         this.autor = autor;
         this.titulo = titulo;
         this.editorial = editorial;
-        this.fecha = fecha;
+        this.fechaPublicacion = fechaPublicacion;
         this.unidadesDisponibles = unidadesDisponibles;
         this.estadoLibro = estadoLibro;
     }
+
+
+    /**
+     * Metodo que permite verificar la disponibilidad de un libro
+     * @param cantidad
+     * @return true si hay suficientes unidades
+     */
+
+    public boolean libroDisponible(int cantidad) {
+        return this.unidadesDisponibles >= cantidad; 
+    }
+
+
+    /**
+     * Metodo que permite disminuir la cantidad de libros según la cantidad que se solicite y modifica su estado según si se encuentra disponile o no disponible
+     * @param cantidad
+     */
 
     public void disminuirCantidad(int cantidad) {
 
@@ -29,12 +48,17 @@ public class Libro {
 
             this.unidadesDisponibles = this.unidadesDisponibles - cantidad;
             if (this.unidadesDisponibles == 0) {
-                this.estadoLibro = EstadoLibro.RESERVADO;
+                this.estadoLibro = EstadoLibro.NO_DISPONIBLE;
             } else {
                 this.estadoLibro = EstadoLibro.DISPONIBLE;
             }
         }
     }
+
+    /**
+     * Metodo que permite sumar la cantidad total de libros cuando alguien haga la devolución y modifica su estado a disponible
+     * @param cantidad
+     */
 
     public void sumarCantidad(int cantidad) {
         this.unidadesDisponibles = this.unidadesDisponibles + cantidad;
@@ -42,7 +66,7 @@ public class Libro {
             this.estadoLibro = EstadoLibro.DISPONIBLE;
         }
     }
-    
+
 
     public String getCodigo() {
         return codigo;
@@ -84,12 +108,12 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public String getFecha() {
-        return fecha;
+    public LocalDate getFechaPublicacion() {
+        return fechaPublicacion;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     public int getUnidadesDisponibles() {
@@ -108,11 +132,15 @@ public class Libro {
         this.estadoLibro = estadoLibro;
     }
 
+    
     @Override
     public String toString() {
         return "Libro [codigo=" + codigo + ", isbn=" + isbn + ", autor=" + autor + ", titulo=" + titulo + ", editorial="
-                + editorial + ", fecha=" + fecha + ", unidadesDisponibles=" + unidadesDisponibles + ", estadoLibro="
-                + estadoLibro + "]";
+                + editorial + ", fechaPublicacion=" + fechaPublicacion + ", unidadesDisponibles=" + unidadesDisponibles
+                + ", estadoLibro=" + estadoLibro + "]";
     }
+    
 
+  
 }
+
