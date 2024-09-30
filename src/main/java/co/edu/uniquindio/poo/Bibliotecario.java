@@ -1,20 +1,23 @@
 package co.edu.uniquindio.poo;
+import java.util.Collection;
+import java.util.LinkedList;
 
-public class Bibliotecario extends Estudiante {
+public class Bibliotecario extends Usuario {
 
     private double salario;
     private int prestamosRealizados;
     private int añosTrabajando;
+    private Collection<Prestamo> prestamos;
 
-    public Bibliotecario(String nombre, String cedula, String telefono, String correo, double salario,
-            int prestamosRealizados, int añosTrabajando) {
+    public Bibliotecario(String nombre, String cedula, String telefono, String correo, double salario, int prestamosRealizados, int añosTrabajando) {
         super(nombre, cedula, telefono, correo);
         this.salario = salario;
-        this.prestamosRealizados = prestamosRealizados;
+        this.prestamosRealizados = 0;
         this.añosTrabajando = añosTrabajando;
+        prestamos = new LinkedList <>();
     }
 
-    public void sumarPrestamo(){
+    public void incrementarPrestamos() {
         this.prestamosRealizados = this.prestamosRealizados + 1;
     }
 
@@ -42,8 +45,20 @@ public class Bibliotecario extends Estudiante {
         this.añosTrabajando = añosTrabajando;
     }
 
-    
+    public Collection<Prestamo> getPrestamos() {
+        return prestamos;
+    }
 
+    public void setPrestamos(Collection<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    @Override
+    public String toString() {
+        return "Bibliotecario [salario=" + salario + ", prestamosRealizados=" + prestamosRealizados
+                + ", añosTrabajando=" + añosTrabajando + ", prestamos=" + prestamos + "]";
+    }
+
+   
 }
-
 
