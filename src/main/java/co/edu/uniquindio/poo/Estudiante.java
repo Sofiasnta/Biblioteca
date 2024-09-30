@@ -53,8 +53,10 @@ public class Estudiante extends Usuario {
     }
 
 
-  
-    
-  
+    @Override
+    public String toString() {
+        return "Estudiante [programaAcademico=" + programaAcademico + ", cantidadPrestamos=" + cantidadPrestamos
+                + ", prestamos=" + prestamos + "]";
+    }
 
 }
