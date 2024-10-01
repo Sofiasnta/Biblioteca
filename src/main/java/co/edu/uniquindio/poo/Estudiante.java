@@ -52,11 +52,9 @@ public class Estudiante extends Usuario {
         this.cantidadPrestamos = cantidadPrestamos;
     }
 
-
     @Override
     public String toString() {
-        return "Estudiante [programaAcademico=" + programaAcademico + ", cantidadPrestamos=" + cantidadPrestamos
-                + ", prestamos=" + prestamos + "]";
+        return "Estudiante= {" + super.toString() + " Programa Academico: " + programaAcademico +", Cantidad prestamos: "+cantidadPrestamos+"}";
     }
 
 }
