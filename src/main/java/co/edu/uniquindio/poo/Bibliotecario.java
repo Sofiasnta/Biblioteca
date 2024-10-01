@@ -21,6 +21,8 @@ public class Bibliotecario extends Usuario {
         this.prestamosRealizados = this.prestamosRealizados + 1;
     }
 
+     
+
     public double getSalario() {
         return salario;
     }
@@ -61,4 +63,3 @@ public class Bibliotecario extends Usuario {
 
    
 }
-
