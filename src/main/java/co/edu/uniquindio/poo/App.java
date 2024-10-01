@@ -1,19 +1,17 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+
 
 public class App {
     public static void main(String[] args) {
     
 
-
-        Bibliotecario bibliotecario5 = new Bibliotecario("sofi", "93003033", "2222", "sofia", 1);
-        Bibliotecario bibliotecario1 = new Bibliotecario("Sofia", "11912", "1718181", "sofi1@gmail.com", 2);
-        Bibliotecario bibliotecario2 = new Bibliotecario("Luz", "119122", "17181281", "lui1@gmail.com", 3);
-        Bibliotecario bibliotecario3 = new Bibliotecario("Nicolas", "109122", "17181281", "nicolas1@gmail.com", 2);
-        Bibliotecario bibliotecario4 = new Bibliotecario("Maria", "1194", "393993", "mari3@gmail.com", 1);
+        Bibliotecario bibliotecario5 = new Bibliotecario("sofi", "93003033", "2222", "sofia",0,0,1);
+        Bibliotecario bibliotecario1 = new Bibliotecario("Sofia", "11912", "1718181", "sofi1@gmail.com",0,0 ,2);
+        Bibliotecario bibliotecario2 = new Bibliotecario("Luz", "119122", "17181281", "lui1@gmail.com", 0,0,3);
+        Bibliotecario bibliotecario3 = new Bibliotecario("Nicolas", "109122", "17181281", "nicolas1@gmail.com", 0,0,2);
+        Bibliotecario bibliotecario4 = new Bibliotecario("Maria", "1194", "393993", "mari3@gmail.com",0,0, 1);
 
         
         Estudiante estudiante1 = new Estudiante("Sol", "1127575678", "3112910", "sol12@gmail.com", "artes", 0);
@@ -59,18 +57,15 @@ public class App {
        
 
         prestamo1.agregarLibroPrestamoo(libro4, 1);
-        //prestamo2.agregarLibroPrestamoo(libro4, 1);
-       // prestamo3.agregarLibroPrestamoo(libro3, 3);
+        prestamo2.agregarLibroPrestamoo(libro4, 1);
+       prestamo3.agregarLibroPrestamoo(libro3, 3);
 
        biblioteca.consultarPrestamo("1");
 
 
-       bibliotecario4.calcularSalario();
-       System.out.println("Salario del bibliotecario 4: " + bibliotecario4.getSalarioPagar());
-        
-       // System.out.println(biblioteca.getPrestamos());
+      
 
-        biblioteca.prestamosPorLibro("El principito");
+        //biblioteca.prestamosPorLibro("El principito");
         
         
         for (Prestamo prestamo : biblioteca.getPrestamos()) {
@@ -79,13 +74,26 @@ public class App {
         System.out.println("Días de préstamo: " + dias + ", Costo total: " + costo);
     }
 
+    for (Prestamo prestamo : biblioteca.getPrestamos()) {
+    double total = prestamo.calcularPrecioFinalPrestamo();
+    System.out.println("El costo total del préstamo es: " + total);
 
 
-        biblioteca.reemplazarLibro("1", nuevoLibro);
 
+    //biblioteca.calcularSalarioEmpleados(bibliotecario4);
+    //bibliotecario4.getPrestamosRealizados();
+    //biblioteca.calcularTotalDineroRecaudado();
+    //biblioteca.calcularTotalDineroRecaudado();
+    
 
+     biblioteca.reemplazarLibro("1", nuevoLibro);
 
-
+        
+       
+         
 
     }
+
+    }
+
 }
