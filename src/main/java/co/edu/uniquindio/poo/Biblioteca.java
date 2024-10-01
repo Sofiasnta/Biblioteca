@@ -229,6 +229,7 @@ public class Biblioteca {
      * @param nuevoLibro
      * @return 
      */
+
     public boolean reemplazarLibro(String isbn, Libro nuevoLibro) {
         for (int i = 0; i < libros.size(); i++) {
             Libro libroActual = libros.get(i);
@@ -254,10 +255,11 @@ public class Biblioteca {
     public Libro consultarLibro(String codigo) {
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
+                System.out.println("El libro consultado es: " + libro);
                 return libro;
-
             }
         }
+        System.out.println( "Libro con ISBN " + codigo + " no se encuentra.");
         return null;
 
     }
@@ -272,6 +274,7 @@ public class Biblioteca {
     public Prestamo consultarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getCodigo().equals(codigo)) {
+                System.out.println("El prestamo consultado es: " + prestamo);
                 return prestamo;
 
             }
@@ -294,7 +297,7 @@ public class Biblioteca {
             for (DetallePrestamo detalle : prestamo.getDetallePrestamos()) {
                 if (detalle.getLibro().getTitulo().equals(titulo)) {
                     contadorPrestamos++;
-                    break; // sale del bucle cuando encuentra el libro
+                    break; 
                 }
             }
         }
@@ -308,11 +311,11 @@ public class Biblioteca {
      * @return salarioPagar
      */
 
-    public double calcularSalarioEmpleados() {
+    public double calcularSalarioEmpleados(Bibliotecario bibliotecario) {
         double salarioPagar = 0;
         for (Prestamo prestamo : prestamos) {
-            Bibliotecario bibliotecario = prestamo.getBibliotecario();
-
+            if (prestamo.getBibliotecario().equals(bibliotecario)) {
+          
             double totalPrestamo = prestamo.calcularPrecioFinalPrestamo();
             double comisionPrestamo = totalPrestamo * 0.20;
 
@@ -321,10 +324,13 @@ public class Biblioteca {
 
             salarioPagar += comisionPrestamo + bonificacion;
         }
+    }
         return salarioPagar;
 
     }
 
+
+   
     /**
      * Meotodo que permite calcular el dinero recaudado por la biblioteca me cada
      * prestamo
@@ -341,6 +347,8 @@ public class Biblioteca {
         return totalDinero;
 
     }
+
+
 
 
 
